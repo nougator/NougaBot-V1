@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 import random
-import os
 
 client = commands.Bot(command_prefix='.')
 
@@ -14,7 +13,7 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game('.help'))
 
 
-@client.command()
+@client.command(aliases=['8ball'])
 async def _8ball(self, ctx, *, question):
         responses = ['Oui.',
                      'Non.',
@@ -32,10 +31,6 @@ async def _8ball(self, ctx, *, question):
                      'NON!!!',
                      'OUI!!!']
         await ctx.send(f'> {question}\n{random.choice(responses)}')
-
-@client.command()
-async def load(ctx, extension):
-    client.unload_extension(f'cogs.{extension}')
 
 
 @client.command()
@@ -58,13 +53,9 @@ async def say(ctx, *, args):
 
 @client.event
 async def on_message(message):
-    if str(message.channel.id) == '694614592030244895':
+    if str(message.channel.id) == 'channelId':
         async def YesNoDetect(msg):
-            inputStr = msg.content.replace(',', '')
-            inputStr1 = inputStr.replace('.', '')
-            inputStr2 = inputStr1.replace('!', '')
-            inputStr3 = inputStr2.replace('?', '')
-            output = inputStr3.lower().split()
+            output = msg.content.replace(',', '').replace('.', '').replace('!', '').replace('?', '').lower().split()
 
             async def sendLoseMsg():
                 await msg.channel.send(f'Tu as perdu **{message.author.mention}**!')
@@ -91,12 +82,12 @@ async def on_message(message):
 @client.event
 async def on_member_join(member):
     # welcome messages
-    channel = discord.utils.get(member.guild.channels, name='👋𝖇𝖎𝖊𝖓𝖛𝖊𝖓𝖚𝖊')
-    welcome_embed = discord.Embed(title=f'Bienvenue, {member}', description='Va lire <#693487377481596968>',
+    channel = discord.utils.get(member.guild.channels, name='👋bienvenue')
+    welcome_embed = discord.Embed(title=f'Bienvenue, {member}', description='Va lire <#channelId>',
                                   color=discord.Colour.from_rgb(115, 0, 255),
-                                  url='https://discordapp.com/channels/693474364795912265/693487377481596968/693494127740059718')
+                                  url='message link')
     await channel.send(embed=welcome_embed)
-    await member.send(f'Bienvenue {member.mention} regarde dans <#693487377481596968> pour éviter de te faire sanctionner débilement :wink:')
+    await member.send(f'Bienvenue {member.mention} regarde dans <#channeId> pour éviter de te faire sanctionner débilement :wink:')
     print(f'{member} has joined.')
 
 client.run(TOKEN)
