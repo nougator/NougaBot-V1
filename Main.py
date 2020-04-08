@@ -15,21 +15,7 @@ async def on_ready():
 
 @client.command(aliases=['8ball'])
 async def _8ball(self, ctx, *, question):
-        responses = ['Oui.',
-                     'Non.',
-                     'Je ne sais pas.',
-                     'Heureusement pas',
-                     'Heureusement oui.',
-                     'Malheureusement oui.',
-                     'Malheureusement non.',
-                     'Je n\'espère pas.',
-                     'Bien sûr!',
-                     'Bien sûr que non!',
-                     'T\'as vraiment envie de savoir?',
-                     'La réponse va te choquer... Oui!',
-                     'La réponse va te choquer... Non!',
-                     'NON!!!',
-                     'OUI!!!']
+        responses = []
         await ctx.send(f'> {question}\n{random.choice(responses)}')
 
 
