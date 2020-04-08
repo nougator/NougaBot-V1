@@ -78,16 +78,4 @@ async def on_message(message):
 
     await client.process_commands(message)
 
-
-@client.event
-async def on_member_join(member):
-    # welcome messages
-    channel = discord.utils.get(member.guild.channels, name='👋bienvenue')
-    welcome_embed = discord.Embed(title=f'Bienvenue, {member}', description='Va lire <#channelId>',
-                                  color=discord.Colour.from_rgb(115, 0, 255),
-                                  url='message link')
-    await channel.send(embed=welcome_embed)
-    await member.send(f'Bienvenue {member.mention} regarde dans <#channeId> pour éviter de te faire sanctionner débilement :wink:')
-    print(f'{member} has joined.')
-
 client.run(TOKEN)
