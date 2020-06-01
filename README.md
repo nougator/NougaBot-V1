@@ -5,6 +5,6 @@ To install dependencies:
 ```
 pip install -r requirements.txt
 ```
-**You have to credit me if you use the bot in your servers**
+**You have to credit me if you use the bot in your server(s)**
 
 Enjoy!
